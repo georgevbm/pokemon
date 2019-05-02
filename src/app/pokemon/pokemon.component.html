@@ -1,0 +1,13 @@
+<div class="row text-center">
+  <div class="col-md-6 p-2">
+    <p class="h4 mb-3">Pokémons: {{titleType}}</p>
+    <button [routerLink]="['pokemon', pokemon.id]" type="button" *ngFor="let pokemon of pokemons"
+      class="btn btn-danger m-2">
+      {{pokemon.name}}
+    </button>
+  </div>
+
+  <div class="col-md-6 p-2">
+    <router-outlet></router-outlet>
+  </div>
+</div>

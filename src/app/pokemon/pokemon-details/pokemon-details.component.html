@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="text-center">
+    <img class="card-img-top" src="{{pokemon.sprite}}"
+      alt="Card image cap">
+  </div>
+  <div class="card-body">
+    <span class="card-title h3">{{pokemon.name}}</span><br>
+    <span class="h6" style="margin-top: -20022px;">{{getTypes(pokemon.types)}}</span>
+
+    <table class="mt-2">
+      <tr>
+        <td>
+          <p class="card-text">Height: {{pokemon.height}}m </p>
+        </td>
+        <td>
+          <p class="card-text">Weight: {{pokemon.weight}}kg</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <span class="h5 mb-3">Abilities</span>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let ability of pokemon.abilities">{{ability}}</li>
+  </ul>
+</div>
