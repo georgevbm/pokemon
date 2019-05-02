@@ -1,7 +1,8 @@
 <div class="text-center">
     <button (click)="redirectPokemon(type.name, type.idType)" type="button" *ngFor="let type of types"
-        class="btn btn-danger m-2">
-        {{type.name}}
+        class="btn btn-danger m-2 active">
+        <img src="{{type.medal}}" width="28" height="28" alt="">
+        <p class="mb-0 mt-1">{{type.name}}</p>
     </button>
     <router-outlet></router-outlet>
 </div>
