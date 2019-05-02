@@ -8,14 +8,16 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-  },
-  {
-    path: 'types/:idType',
-    component: PokemonComponent,
     children: [
       {
-        path: 'pokemon/:idPokemon',
-        component: PokemonDetailsComponent,
+        path: 'types/:idType',
+        component: PokemonComponent,
+        children: [
+          {
+            path: 'pokemon/:idPokemon',
+            component: PokemonDetailsComponent,
+          }
+        ]
       }
     ]
   }

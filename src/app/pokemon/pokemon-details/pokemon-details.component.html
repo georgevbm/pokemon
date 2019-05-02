@@ -1,8 +1,16 @@
-<div class="card">
-  <div class="text-center">
-    <img class="card-img-top" src="{{pokemon.sprite}}"
-      alt="Card image cap">
+<div class="card card-style">
+  <div class="text-center" *ngIf="pokemon.sprite; else notImage">
+    <img class="card-img-top" src="{{pokemon.sprite}}" alt="Card image cap">
   </div>
+
+  <ng-template #notImage>
+    <div class="text-center mt-4">
+      <h5>
+        Image not found!
+      </h5>
+    </div>
+  </ng-template>
+
   <div class="card-body">
     <span class="card-title h3">{{pokemon.name}}</span><br>
     <span class="h6" style="margin-top: -20022px;">{{getTypes(pokemon.types)}}</span>
@@ -21,6 +29,7 @@
 
   <span class="h5 mb-3">Abilities</span>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" *ngFor="let ability of pokemon.abilities">{{ability}}</li>
+    <li class="list-group-item 
+    " *ngFor="let ability of pokemon.abilities">{{ability}}</li>
   </ul>
 </div>

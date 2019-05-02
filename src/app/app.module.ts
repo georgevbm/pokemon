@@ -20,7 +20,7 @@ import { PokemonModule } from './pokemon/pokemon.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CommonModule, 
+    CommonModule,
     RouterModule,
     PokemonModule
   ],

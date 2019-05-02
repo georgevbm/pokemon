@@ -42,6 +42,20 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  redirectPokemon(type: string, id: number) {
+    this.router.navigate(['types', id]);
+  }
+
+  firstLetterUpper(word: string) {
+    let firstLetter = word[0];
+    let newWord = firstLetter.toUpperCase() + word.slice(1);
+    return newWord;
+  }
+
+  extractIdUrl(url: string) {
+    return parseInt(url.substr(url.length - 6).replace(/[^\d]+/g, ''));
+  }
+
   insertMedalType(idType: number) {
     switch (idType) {
       case PokemonTypeEnum.NORMAL:
@@ -64,7 +78,7 @@ export class HomeComponent implements OnInit {
 
       case PokemonTypeEnum.BUG:
         return PokemonMedalEnum.BUG;
-        
+
       case PokemonTypeEnum.GHOST:
         return PokemonMedalEnum.GHOST;
 
@@ -98,19 +112,5 @@ export class HomeComponent implements OnInit {
       case PokemonTypeEnum.FAIRY:
         return PokemonMedalEnum.FAIRY;
     }
-  }
-
-  redirectPokemon(type: string, id: number) {
-    this.router.navigate(['types', id]);
-  }
-
-  firstLetterUpper(word: string) {
-    let firstLetter = word[0];
-    let newWord = firstLetter.toUpperCase() + word.slice(1);
-    return newWord;
-  }
-
-  extractIdUrl(url: string) {
-    return parseInt(url.substr(url.length - 6).replace(/[^\d]+/g, ''));
   }
 }

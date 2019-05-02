@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
     declarations:[
         PokemonComponent,
-        PokemonDetailsComponent
+        PokemonDetailsComponent,
     ],
     imports:[
         CommonModule,
