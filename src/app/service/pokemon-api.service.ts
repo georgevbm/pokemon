@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, TypeDecorator } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment'
+import { Pokemon } from '../pokemon/pokemon';
 
 const API = environment.apiUrl;
 
@@ -19,6 +20,6 @@ export class PokemonAPIService {
     }
 
     getPokemon(codPokemon: number){
-        return this.http.get(API + 'pokemon/' + codPokemon);
+        return this.http.get<Pokemon>(API + 'pokemon/' + codPokemon);
     }
 }
