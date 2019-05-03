@@ -15,7 +15,13 @@ export class PokemonDetailsComponent implements OnInit {
   ngOnInit() {}
 
   private getTypes(types: string[]) {
-    return types.join(', ');
+    let typesAux: string[] = [];
+    
+    types.forEach(type => {
+      typesAux.push(this.refactorName(type));
+    });
+
+    return typesAux.join(', ');
   }
 
   private convertMeters(n: number) {

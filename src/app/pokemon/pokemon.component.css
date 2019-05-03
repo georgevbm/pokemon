@@ -3,3 +3,9 @@
     grid-template-columns: repeat(5, 20%);
     grid-gap: 3px;
 }
+
+.selectPokemonClass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -8,7 +8,13 @@
     </div>
   </div>
 
-  <div class="col-md-4 mt-2 ml-0">
+  <div class="col-md-4 mt-2 ml-0" *ngIf="pokemon; else selectPokemon">
     <app-pokemon-details [pokemon]="pokemon"></app-pokemon-details>
   </div>
+
+  <ng-template #selectPokemon>
+    <div class="col-md-4 mt-2 ml-0 selectPokemonClass">
+      <h3>Select a Pokemon</h3>
+    </div>
+  </ng-template>
 </div>

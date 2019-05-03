@@ -5,24 +5,23 @@
 
   <ng-template #notImage>
     <div class="text-center mt-4">
-      <h5>
-        Image not found!
+      <h5 class="text-mute">
+        Image not found
       </h5>
     </div>
   </ng-template>
 
   <div class="card-body">
     <span class="card-title h3">{{refactorName(pokemon.name)}}</span><br>
-    <span class="h6" style="margin-top: -20022px;"
-      *ngFor="let type of pokemon.types">{{firstLetterUpper(getTypes(pokemon.types))}}</span>
+    <span class="h6" style="margin-top: -20022px;">{{getTypes(pokemon.types)}}</span>
 
     <table class="mt-2">
       <tr>
         <td>
-          <p class="card-text">Height: {{convertMeters(pokemon.height)}}m </p>
+          <p class="card-text"><b>Height:</b> {{convertMeters(pokemon.height)}}m </p>
         </td>
         <td>
-          <p class="card-text">Weight: {{convertMeters(pokemon.weight)}}kg</p>
+          <p class="card-text"><b>Weight:</b> {{convertMeters(pokemon.weight)}}kg</p>
         </td>
       </tr>
     </table>
