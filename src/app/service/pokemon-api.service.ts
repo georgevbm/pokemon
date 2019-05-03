@@ -16,7 +16,7 @@ export class PokemonAPIService {
     }
 
     getPokemonsType(codType: number) {
-        return this.http.get(API + 'type/' + codType);
+        return this.http.get<Object[]>(API + 'type/' + codType);
     }
 
     getPokemon(codPokemon: number){

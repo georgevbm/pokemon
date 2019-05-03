@@ -17,4 +17,5 @@ export enum PokemonMedalEnum {
     DRAGON = "https://vignette.wikia.nocookie.net/pokemongo/images/c/c7/Dragon.png/revision/latest?cb=20161013132807",
     DARK = "https://vignette.wikia.nocookie.net/pokemongo/images/0/0e/Dark.png/revision/latest?cb=20161013132800",
     FAIRY = "https://vignette.wikia.nocookie.net/pokemongo/images/4/43/Fairy.png/revision/latest?cb=20161013132820",
+    NOT_MEDAL = "https://cdn4.iconfinder.com/data/icons/oakcons-2/16/Pokeball-512.png"
 }

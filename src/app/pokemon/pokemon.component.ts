@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonAPIService } from '../service/pokemon-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon',
@@ -9,8 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PokemonComponent implements OnInit {
 
-  pokemons: { id: number, name: string }[] = [];
-  filter: string = '';
+  pokemons$: Observable<Object[]>;
 
   constructor(private pokemonService: PokemonAPIService,
     private activatedRoute: ActivatedRoute) { }
@@ -21,20 +21,7 @@ export class PokemonComponent implements OnInit {
 
   getPokemons() {
     this.activatedRoute.params.subscribe(params => {
-      this.pokemons = [];
-
-      const idType = params.idType;
-      this.pokemonService.getPokemonsType(idType)
-        .subscribe(data => {
-          let pokemonsAux = data['pokemon'];
-
-          pokemonsAux.forEach(pokemon => {
-            let id = this.extractIdUrl(pokemon['pokemon']['url']);
-            let name = this.refactorNamePokemon(pokemon['pokemon']['name']);
-
-            this.pokemons.push({ id, name });
-          });
-        });
+      this.pokemons$ = this.pokemonService.getPokemonsType(params.idType);
     });
   }
 

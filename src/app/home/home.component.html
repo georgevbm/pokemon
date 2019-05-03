@@ -1,8 +1,8 @@
-<div class="text-center">
-    <button (click)="redirectPokemon(type.name, type.idType)" type="button" *ngFor="let type of types"
+<div class="text-center" *ngIf="(types$ | async) as types">
+    <button *ngFor="let type of types.results" (click)="redirectPokemon(extractIdUrl(type.url))" type="button" 
         class="btn btn-danger m-2 active">
-        <img src="{{type.medal}}" width="28" height="28" alt="">
-        <p class="mb-0 mt-1">{{type.name}}</p>
+        <img src="{{insertMedalType(extractIdUrl(type.url))}}" width="28" height="28" alt="">
+        <p class="mb-0 mt-1">{{firstLetterUpper(type.name)}}</p>
     </button>
 </div>
 <router-outlet></router-outlet>

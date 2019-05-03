@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonAPIService } from '../service/pokemon-api.service';
-import { PokemonType } from './pokemon-type';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PokemonMedalEnum } from './pokemon-medal.enum';
 import { PokemonTypeEnum } from './pokemon-type.enum';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -12,37 +12,21 @@ import { PokemonTypeEnum } from './pokemon-type.enum';
 })
 export class HomeComponent implements OnInit {
 
-  types: PokemonType[] = [];
+  types$: Observable<Object[]>;
 
   constructor(private pokemonService: PokemonAPIService,
-    private router: Router) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.getTypes();
-    console.log(this.types);
   }
 
   getTypes() {
-    this.pokemonService.getAllTypes()
-      .subscribe(data => {
-        let typesAux = data['results'];
-
-        typesAux.forEach(type => {
-          let newName = this.firstLetterUpper(type.name);
-          let idType = this.extractIdUrl(type.url);
-
-          let newType: PokemonType = { idType, name: newName, url: type.url, medal: this.insertMedalType(idType - 1) };
-
-          if (newType.idType == 10001 || newType.idType == 10002) {
-            console.log("Type not contains pokemons");
-          } else {
-            this.types.push(newType);
-          }
-        });
-      });
+    this.types$ = this.pokemonService.getAllTypes();
   }
 
-  redirectPokemon(type: string, id: number) {
+  redirectPokemon(id: number) {
     this.router.navigate(['types', id]);
   }
 
@@ -57,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   insertMedalType(idType: number) {
-    switch (idType) {
+    switch (idType - 1) {
       case PokemonTypeEnum.NORMAL:
         return PokemonMedalEnum.NORMAL;
 
@@ -111,6 +95,9 @@ export class HomeComponent implements OnInit {
 
       case PokemonTypeEnum.FAIRY:
         return PokemonMedalEnum.FAIRY;
+
+      default:
+        return PokemonMedalEnum.NOT_MEDAL;
     }
   }
 }

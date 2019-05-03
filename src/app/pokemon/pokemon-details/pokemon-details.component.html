@@ -1,5 +1,5 @@
 <div class="card card-style" *ngIf="(pokemon$ | async) as pokemon">
-  <div class="text-center">
+  <div class="text-center" *ngIf="pokemon.sprites.front_default != null; else notImage">
     <img class="card-img-top" src="{{pokemon.sprites.front_default}}" alt="Card image cap">
   </div>
 

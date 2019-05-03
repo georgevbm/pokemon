@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ActivationStart } from '@angular/router';
 import { PokemonAPIService } from 'src/app/service/pokemon-api.service';
 import { Pokemon } from '../pokemon';
 import { Observable } from 'rxjs';
@@ -28,11 +28,10 @@ export class PokemonDetailsComponent implements OnInit {
   }
 
   private getTypes(type: string) {
-
     return type + " ";
   }
 
-  private convertMeters(n: number){
+  private convertMeters(n: number) {
     return n / 10;
   }
 

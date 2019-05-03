@@ -1,8 +1,7 @@
-<div class="row text-center m-0">
+<div class="row text-center m-0" *ngIf="(pokemons$ | async) as pokemons">
   <div class="col-md-8">
-    <button [routerLink]="['pokemon', pokemon.id]" type="button" *ngFor="let pokemon of pokemons"
-      class="btn btn-danger m-2">
-      {{pokemon.name}}
+    <button type="button" *ngFor="let pokemon of pokemons.pokemon" class="btn btn-danger m-2" [routerLink]="['pokemon', extractIdUrl(pokemon.pokemon.url)]">
+      {{refactorNamePokemon(pokemon.pokemon.name)}}
     </button>
   </div>
 
