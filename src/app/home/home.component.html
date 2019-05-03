@@ -1,4 +1,4 @@
-<div class="text-center" *ngIf="(types$ | async) as types">
+<div class="types-list" *ngIf="(types$ | async) as types">
     <button *ngFor="let type of types.results" (click)="redirectPokemon(extractIdUrl(type.url))" type="button" 
         class="btn btn-danger m-2 active">
         <img src="{{insertMedalType(extractIdUrl(type.url))}}" width="28" height="28" alt="">
