@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ActivationStart } from '@angular/router';
-import { PokemonAPIService } from 'src/app/service/pokemon-api.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { Pokemon } from '../pokemon';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -11,24 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class PokemonDetailsComponent implements OnInit {
 
-  pokemon$: Observable<Pokemon>;
+  @Input() pokemon: Pokemon;
 
-  constructor(private activatedRoute: ActivatedRoute,
-    private pokemonService: PokemonAPIService,
-    private router: Router) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.getPokemon();
-  }
+  ngOnInit() {}
 
-  getPokemon() {
-    this.activatedRoute.params.subscribe(params => {
-      this.pokemon$ = this.pokemonService.getPokemon(params['idPokemon']);
-    });
-  }
-
-  private getTypes(type: string) {
-    return type + " ";
+  private getTypes(types: string[]) {
+    return types.join(', ');
   }
 
   private convertMeters(n: number) {

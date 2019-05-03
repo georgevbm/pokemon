@@ -1,6 +1,6 @@
-<div class="card card-style" *ngIf="(pokemon$ | async) as pokemon">
-  <div class="text-center" *ngIf="pokemon.sprites.front_default != null; else notImage">
-    <img class="card-img-top" src="{{pokemon.sprites.front_default}}" alt="Card image cap">
+<div class="card card-style">
+  <div class="text-center" *ngIf="pokemon.sprite; else notImage">
+    <img class="card-img-top" src="{{pokemon.sprite}}" alt="Card image cap">
   </div>
 
   <ng-template #notImage>
@@ -14,7 +14,7 @@
   <div class="card-body">
     <span class="card-title h3">{{refactorName(pokemon.name)}}</span><br>
     <span class="h6" style="margin-top: -20022px;"
-      *ngFor="let type of pokemon.types">{{firstLetterUpper(getTypes(type.type.name))}}</span>
+      *ngFor="let type of pokemon.types">{{firstLetterUpper(getTypes(pokemon.types))}}</span>
 
     <table class="mt-2">
       <tr>
@@ -31,6 +31,6 @@
   <span class="h5 mb-3">Abilities</span>
   <ul class="list-group list-group-flush">
     <li class="list-group-item 
-    " *ngFor="let ability of pokemon.abilities">{{refactorName(ability.ability.name)}}</li>
+    " *ngFor="let ability of pokemon.abilities">{{refactorName(ability)}}</li>
   </ul>
 </div>
