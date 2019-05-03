@@ -25,39 +25,14 @@ export class PokemonDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.pokemon$ = this.pokemonService.getPokemon(params['idPokemon']);
     });
-
-    // this.activatedRoute.params.subscribe(params => {
-    //   this.pokemonService.getPokemon(params['idPokemon'])
-    //     .subscribe(data => {
-    //       let abilities: string[] = [];
-    //       data['abilities'].filter(ability => !!ability).forEach(ability => {
-    //         abilities.push(this.refactorNames(ability['ability']['name']));
-    //       });
-    //       let height: number = data['height'] / 10;
-    //       let id: number = data['id'];
-    //       let name: string = this.refactorNames(data['name']);
-    //       let sprite: string = data['sprites']['front_default'];
-    //       let types: string[] = [];
-    //       data['types'].filter(type => !!type).forEach(type => {
-    //         types.push(this.refactorNames(type['type']['name']));
-    //       });
-    //       let weight: number = data['weight'] / 10;
-
-    //       let p: Pokemon = { abilities, height, id, name, sprite, types, weight }
-    //       this.pokemon = p;
-    //     });
-    // });
   }
 
-  getTypes(type: string) {
-    return type + ', ';
+  private getTypes(type: string) {
+
+    return type + " ";
   }
 
-  console(message: any){
-    console.log(message);
-  }
-
-  convertMeters(n: number){
+  private convertMeters(n: number){
     return n / 10;
   }
 
