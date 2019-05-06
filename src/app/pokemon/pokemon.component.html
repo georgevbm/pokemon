@@ -1,5 +1,6 @@
-<div class="row text-center m-0"  *ngIf="(pokemons$ | async) as pokemons">
-  <div class="col-md-8">
+<div class="row text-center m-0" *ngIf="(pokemons$ | async) as pokemons">
+
+  <div class="col-md-12" *ngIf="!showPokemon.isShown; else showElse">
     <div class="pokemon-grid">
       <button type="button" *ngFor="let pokemon of pokemons.pokemon" class="btn btn-danger m-2"
         (click)="savePokemon(pokemon.pokemon.url)" (click)="showPokemon.toggleTrue()">
@@ -8,5 +9,17 @@
     </div>
   </div>
 
+  <ng-template #showElse>
+    <div class="col-md-8">
+      <div class="pokemon-grid">
+        <button type="button" *ngFor="let pokemon of pokemons.pokemon" class="btn btn-danger m-2"
+          (click)="savePokemon(pokemon.pokemon.url)" (click)="showPokemon.toggleTrue()">
+          {{refactorNamePokemon(pokemon.pokemon.name)}}
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
   <app-pokemon-details #showPokemon [pokemon]="pokemon"></app-pokemon-details>
+
 </div>
