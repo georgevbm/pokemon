@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonDetailsComponent } from "./pokemon/pokemon-details/pokemon-details.component";
+import { NotPokemonComponent } from './errors/not-pokemon/not-pokemon.component';
 
 const routes: Routes = [
   {
@@ -12,9 +13,14 @@ const routes: Routes = [
       {
         path: 'types/:idType',
         component: PokemonComponent
+      },
+      {
+        path: 'not-pokemons',
+        component: NotPokemonComponent,
       }
     ]
   }
+  
 ];
 
 @NgModule({

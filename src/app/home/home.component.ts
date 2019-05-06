@@ -27,7 +27,11 @@ export class HomeComponent implements OnInit {
   }
 
   redirectPokemon(id: number) {
-    this.router.navigate(['types', id]);
+    if (id > 20) {
+      this.router.navigate(['not-pokemons']);
+    } else {
+      this.router.navigate(['types', id]);
+    }
   }
 
   firstLetterUpper(word: string) {

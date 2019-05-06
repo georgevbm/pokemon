@@ -22,7 +22,6 @@ export class PokemonDetailsComponent implements OnInit {
 
   toggleFalse(){
     this.isShown = false;
-    console.log(this.isShown);
   }
 
   private getTypes(types: string[]) {

@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PokemonModule } from './pokemon/pokemon.module';
+import { NotPokemonComponent } from './errors/not-pokemon/not-pokemon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    NotPokemonComponent
   ],
   imports: [
     BrowserModule,

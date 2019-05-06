@@ -52,10 +52,6 @@ export class PokemonComponent implements OnInit {
 
   }
 
-  test(){
-    console.log('Deu certo');
-  }
-
   private refactorNamePokemon(name: string) {
     let newName;
 
