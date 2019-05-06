@@ -9,51 +9,71 @@ import { Pokemon } from '../pokemon';
 export class PokemonDetailsComponent implements OnInit {
 
   @Input() pokemon: Pokemon;
+  isShown: boolean = false;
 
   constructor() { }
 
   ngOnInit() {}
 
+  toggleTrue(){
+    this.isShown = true;
+    console.log(this.isShown);
+  }
+
+  toggleFalse(){
+    this.isShown = false;
+    console.log(this.isShown);
+  }
+
   private getTypes(types: string[]) {
     let typesAux: string[] = [];
     
-    types.forEach(type => {
-      typesAux.push(this.refactorName(type));
-    });
-
-    return typesAux.join(', ');
+    if(types){
+      types.forEach(type => {
+        typesAux.push(this.refactorName(type));
+      });
+  
+      return typesAux.join(', ');
+    } else {
+      // Retirando a mensagem de erro pelo fato de que os tipos podem não ser definidos
+      console.log();
+    }
   }
 
   private convertMeters(n: number) {
     return n / 10;
-  }
+}
 
   private refactorName(name: string) {
     let newName;
 
-    if (name.includes("-")) {
-      let nameSplit = name.split("-");
-      nameSplit.forEach(partName => {
-        if (!newName) {
-          newName = this.firstLetterUpper(partName);
-        } else {
-          newName = newName + " " + this.firstLetterUpper(partName);
-        }
-      });
+    if(name){
+      if (name.includes("-")) {
+        let nameSplit = name.split("-");
+        nameSplit.forEach(partName => {
+          if (!newName) {
+            newName = this.firstLetterUpper(partName);
+          } else {
+            newName = newName + " " + this.firstLetterUpper(partName);
+          }
+        });
+      } else {
+        newName = this.firstLetterUpper(name);
+      }
+  
+      return newName;
     } else {
-      newName = this.firstLetterUpper(name);
+      // Retirando a mensagem de erro pelo fato de que o nome pode não ser definido.
+      console.log();
+      return;
     }
 
-    return newName;
+
   }
 
   private firstLetterUpper(word: string) {
     let firstLetter = word[0];
     let newWord = firstLetter.toUpperCase() + word.slice(1);
     return newWord;
-  }
-
-  private extractIdUrl(url: string) {
-    return parseInt(url.substr(url.length - 6).replace(/[^\d]+/g, ''));
   }
 }

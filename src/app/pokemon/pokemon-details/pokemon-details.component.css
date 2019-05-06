@@ -7,7 +7,6 @@ table {
     width: 100%;
 }
 
-
 .card-style{
     background: #ff5456; /* Old browsers */
     background: -moz-linear-gradient(top, #ff5456 0%, #ffffff 65%); /* FF3.6-15 */
@@ -16,3 +15,27 @@ table {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5456', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }
                 
+.menu-bar{
+    position: fixed;
+    height: 80%;
+    width: 90%;
+    max-width: 620px;
+    margin: 0;
+    margin-right: 10px;
+    margin-top: 155px;
+    padding: 1em;
+    top: 0;
+    right: -90%;
+    transition: right 0.8s ease-out;
+    z-index: 1;
+}
+
+.active-menu .menu-bar{
+    right: 0;
+}
+
+.icon-close {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}

@@ -49,6 +49,11 @@ export class PokemonComponent implements OnInit {
           weight: data['weight']
         }
       });
+
+  }
+
+  test(){
+    console.log('Deu certo');
   }
 
   private refactorNamePokemon(name: string) {

@@ -1,35 +1,38 @@
-<div class="card card-style">
-  <div class="text-center" *ngIf="pokemon.sprite; else notImage">
-    <img class="card-img-top" src="{{pokemon.sprite}}" alt="Card image cap">
-  </div>
-
-  <ng-template #notImage>
-    <div class="text-center mt-4">
-      <h5 class="text-mute">
-        Image not found
-      </h5>
+<div [ngClass]="{ 'active-menu': isShown }">
+  <div class="card card-style menu-bar">
+    <i class="fa fa-window-close icon-close" (click)="toggleFalse()"></i>
+    <div class="text-center" *ngIf="pokemon?.sprite; else notImage">
+      <img class="card-img-top" src="{{pokemon?.sprite}}" alt="Card image cap">
     </div>
-  </ng-template>
 
-  <div class="card-body">
-    <span class="card-title h3">{{refactorName(pokemon.name)}}</span><br>
-    <span class="h6" style="margin-top: -20022px;">{{getTypes(pokemon.types)}}</span>
+    <ng-template #notImage>
+      <div class="text-center mt-4">
+        <h5 class="text-mute">
+          Image not found
+        </h5>
+      </div>
+    </ng-template>
 
-    <table class="mt-2">
-      <tr>
-        <td>
-          <p class="card-text"><b>Height:</b> {{convertMeters(pokemon.height)}}m </p>
-        </td>
-        <td>
-          <p class="card-text"><b>Weight:</b> {{convertMeters(pokemon.weight)}}kg</p>
-        </td>
-      </tr>
-    </table>
+    <div class="card-body">
+      <span class="card-title h3">{{refactorName(pokemon?.name)}}</span><br>
+      <span class="h6" style="margin-top: -20022px;">{{getTypes(pokemon?.types)}}</span>
+
+      <table class="mt-2">
+        <tr>
+          <td>
+            <p class="card-text"><b>Height:</b> {{convertMeters(pokemon?.height)}}m </p>
+          </td>
+          <td>
+            <p class="card-text"><b>Weight:</b> {{convertMeters(pokemon?.weight)}}kg</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <span class="h5 mb-3">Abilities</span>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item 
+    " *ngFor="let ability of pokemon?.abilities">{{refactorName(ability)}}</li>
+    </ul>
   </div>
-
-  <span class="h5 mb-3">Abilities</span>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item 
-    " *ngFor="let ability of pokemon.abilities">{{refactorName(ability)}}</li>
-  </ul>
 </div>
