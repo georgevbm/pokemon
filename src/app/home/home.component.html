@@ -1,6 +1,6 @@
 <div class="types-list fixed-types fixed-top" *ngIf="(types$ | async) as types">
-    <button *ngFor="let type of types.results" (click)="redirectPokemon(extractIdUrl(type.url))" type="button" 
-        class="btn btn-danger m-2 active">
+    <button onFc *ngFor="let type of types.results" (click)="redirectPokemon(extractIdUrl(type.url))" type="button" 
+        class="btn m-2">
         <img src="{{insertMedalType(extractIdUrl(type.url))}}" width="28" height="28" alt="">
         <p class="mb-0 mt-1">{{firstLetterUpper(type.name)}}</p>
     </button>

@@ -2,6 +2,25 @@ div {
     background: #e28a8a;
 }
 
+button {
+    background: rgb(220, 53, 69);
+    color: white;
+}
+
+button:active{
+    background:rgb(168, 26, 26);
+    color: white;
+}
+
+button:focus{
+    background:rgb(168, 26, 26);
+    font-style: italic;    
+}
+button:hover{
+    font-style: italic;
+    color: white;
+}
+
 .types-list {
     display: flex;
     justify-content: space-between;
